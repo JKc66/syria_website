@@ -38,50 +38,65 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to style the governorates
     function style(feature) {
         const properties = feature.properties;
-        // Use the exact name from properties as the key for colors
         const nameKey = properties.name || properties.NAME || properties.admin1Name || '';
-        const fillColor = governorateColors[nameKey] || '#D3D3D3'; // Use mapped color or default gray
+        const fillColor = governorateColors[nameKey] || '#D3D3D3';
 
         return {
             fillColor: fillColor,
-            weight: 2,
+            weight: 1.5,
             opacity: 1,
-            color: 'white', // Border color
-            dashArray: '3',
-            fillOpacity: 0.6 // Increased opacity for better visibility on satellite
+            color: '#fff',
+            fillOpacity: 0.7,
+            className: 'governorate-path'
         };
     }
 
     // Function to handle hover effects
     function highlightFeature(e) {
         const layer = e.target;
+        const isTouchDevice = 'ontouchstart' in window;
+        
         layer.setStyle({
-            weight: 3,
-            color: '#ffffff', // White border on hover for better visibility on satellite
-            dashArray: '',
-            fillOpacity: 0.4 // Higher opacity on hover
+            weight: isTouchDevice ? 3 : 2.5,
+            color: '#FFD700',
+            fillOpacity: 0.8,
+            className: 'governorate-path-active'
         });
-        layer.bringToFront();
+        
+        if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+            layer.bringToFront();
+        }
     }
 
     function resetHighlight(e) {
-        geojsonLayer.resetStyle(e.target);
+        const layer = e.target;
+        geojsonLayer.resetStyle(layer);
+        layer._path.classList.remove('governorate-path-active');
     }
 
     // Function to handle clicks and navigation
     function navigateToCity(e) {
         const layer = e.target;
         const properties = layer.feature.properties;
-        // Use the exact name for navigation link generation as well
         const engName = properties.name || properties.NAME || properties.admin1Name;
 
-        if (engName) {
-            // Convert to lowercase only for the URL, keep original for lookups
-            const pageName = engName.toLowerCase().replace(/\s+/g, '-').replace(/\`/g, '').replace(/\(/g, '').replace(/\)/g, '').replace(/'/g, ''); // Basic sanitization for URL
-            window.location.href = `cities/${pageName}.html`;
-        } else {
-            console.warn('Clicked feature does not have a recognizable English name property.', properties);
-        }
+        // Add visual feedback before navigation
+        layer.setStyle({
+            weight: 3,
+            color: '#FFD700',
+            fillOpacity: 0.9,
+            className: 'governorate-path-clicked'
+        });
+
+        // Short delay for visual feedback before navigation
+        setTimeout(() => {
+            if (engName) {
+                const pageName = engName.toLowerCase()
+                    .replace(/\s+/g, '-')
+                    .replace(/[\`\(\)']/g, '');
+                window.location.href = `cities/${pageName}.html`;
+            }
+        }, 200);
     }
 
     // Function defining actions for each feature
