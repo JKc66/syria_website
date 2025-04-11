@@ -20,24 +20,6 @@ function initializeMobileMenu() {
     });
 }
 
-// Back to top button functionality - always visible
-function initializeBackToTop() {
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    if (!backToTopButton) return;
-    
-    // Make sure the button is visible immediately
-    backToTopButton.classList.add('visible');
-    
-    backToTopButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
 // Enhanced image lazy loading with fade effect
 function initializeLazyLoading() {
     const lazyImages = document.querySelectorAll('.lazy-image');
@@ -166,7 +148,6 @@ function initializeGalleryEffects() {
 // Initialize all features when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initializeMobileMenu();
-    initializeBackToTop();
     initializeLazyLoading();
     initializeSmoothScroll();
     initializeStickyNav();
