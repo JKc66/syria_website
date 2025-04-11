@@ -250,10 +250,33 @@ footer {
     flex: 1;
     width: 100%;
     min-height: 500px; /* Ensure minimum height */
-    margin: 10px 0;
+    margin: 10px auto;
     border: 1px solid #ccc;
     border-radius: 8px;
     position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+/* Force map to properly initialize in different environments */
+.leaflet-container {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+/* Ensure governorate labels are consistent across environments */
+.governorate-label {
+    background: transparent !important;
+    border: none !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    z-index: 1000 !important;
+}
+
+.governorate-label div {
+    text-align: center !important;
+    white-space: nowrap !important;
+    font-family: 'Cairo', sans-serif !important;
 }
 
 /* Styles for governorate labels */

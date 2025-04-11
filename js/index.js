@@ -1,11 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize the map - Coordinates centered roughly on Syria
-    const map = L.map('map').setView([35.0, 38.0], 6);
+    // Initialize the map with a more specific center point for Syria
+    const map = L.map('map', {
+        center: [35.0, 38.5], // Adjusted center coordinates
+        zoom: 7,
+        minZoom: 6.5,
+        maxZoom: 10,
+        attributionControl: true,
+        zoomControl: true
+    });
 
-    // Use Mapbox's satellite-streets style which combines satellite imagery with labels
-    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFzYXNkMTIiLCJhIjoiY205ZDZrcW0zMDdkejJrc2F4ZTU0ZWRmNyJ9.lPUX9ceswcGjrjl2e-k3Bg', {
+    // Use Mapbox's satellite-streets style with explicit retina parameter
+    L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}{r}?access_token=pk.eyJ1IjoiamFzYXNkMTIiLCJhIjoiY205ZDZrcW0zMDdkejJrc2F4ZTU0ZWRmNyJ9.lPUX9ceswcGjrjl2e-k3Bg', {
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a>',
-        maxZoom: 19
+        maxZoom: 19,
+        tileSize: 512,
+        zoomOffset: -1,
+        detectRetina: true
     }).addTo(map);
     
     // Add a scale control to the map
@@ -144,19 +154,19 @@ document.addEventListener('DOMContentLoaded', function () {
             const bounds = layer.getBounds();
             const area = (bounds.getNorth() - bounds.getSouth()) * (bounds.getEast() - bounds.getWest());
             
-            // Scale font size based on area for desktop and mobile
-            let fontSize = 12;
+            // Standardized font sizing that works across environments
+            let fontSize;
             
             if (window.innerWidth <= 768) { // Mobile view
-                fontSize = Math.max(8, Math.min(12, 12 + area * 500));
+                fontSize = Math.max(9, Math.min(14, 11 + Math.sqrt(area) * 10));
             } else { // Desktop/laptop view
-                fontSize = Math.max(16, Math.min(22, 16 + area * 500));
+                fontSize = Math.max(14, Math.min(22, 16 + Math.sqrt(area) * 10));
             }
             
-            // Create a div icon with the Arabic governorate name
+            // Create a div icon with the Arabic governorate name - adding important to styles
             const icon = L.divIcon({
                 className: 'governorate-label',
-                html: `<div style="font-weight: bold; font-size: ${fontSize}px; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 4px rgba(255,255,255,0.9); color: #000;">${displayName}</div>`,
+                html: `<div style="font-weight: bold !important; font-size: ${fontSize}px !important; text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff, 0px 0px 4px rgba(255,255,255,0.9) !important; color: #000 !important;">${displayName}</div>`,
                 iconSize: [150, 40],
                 iconAnchor: [75, 20]
             });
@@ -184,21 +194,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 onEachFeature: onEachFeature
             }).addTo(map);
 
-            // --- Focus map on Syria ---
-            // 1. Get the bounds of the loaded governorates layer
-            const bounds = geojsonLayer.getBounds();
-
-            // 2. Fit the map view to these bounds initially
-            map.fitBounds(bounds);
-
-            // 3. Set the minimum zoom level to prevent zooming out too much
-            //    (Use the zoom level determined by fitBounds as the minimum)
-            map.setMinZoom(map.getZoom());
-
-            // 4. Restrict panning outside the bounds (with a little padding)
-            //    Adjust padding (e.g., 0.1) as needed
-            map.setMaxBounds(bounds.pad(0.1));
-
+            // Wait a moment for rendering and then adjust the view
+            setTimeout(() => {
+                // Get the bounds of the loaded governorates layer
+                const bounds = geojsonLayer.getBounds();
+                
+                // Add a bit more padding to ensure everything is visible
+                map.fitBounds(bounds.pad(0.1));
+                
+                // Force a refresh of the map
+                map.invalidateSize();
+            }, 300);
         })
         .catch(error => {
             console.error('Error loading or parsing GeoJSON:', error);
