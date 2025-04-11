@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدينة حلب - تاريخ وحضارة</title>
+    <style>
+        /* الألوان من العلم السوري */
+        :root {
+            --red: #ce1126;
+            --green: #007a3d;
+            --black: #000000;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--green);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--black) 66%);
+        }
+
+        nav {
+            background-color: var(--black);
+            padding: 1rem 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--red);
+        }
+
+        section {
+            padding: 2rem 0;
+        }
+
+        .hero {
+            height: 500px;
+            background-image: url('/api/placeholder/1200/500');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero-overlay h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-overlay p {
+            font-size: 1.2rem;
+            max-width: 800px;
+        }
+
+        h2 {
+            color: var(--green);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--red);
+            display: inline-block;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .history, .civilizations, .figures {
+            margin-bottom: 3rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-works {
+            margin-top: 1rem;
+        }
+
+        .card-works h4 {
+            color: var(--green);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-works ul {
+            padding-right: 1.5rem;
+        }
+
+        .card-works li {
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .gallery-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border: 4px solid var(--green); /* إطار للصورة */
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-title {
+            padding: 0.5rem;
+            text-align: center;
+            color: var(--black);
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--red) 33%, var(--white) 33%, var(--white) 66%, var(--green) 66%);
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero-overlay h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>مدينة حلب</h1>
+            <p>عاصمة الحضارة والتاريخ</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#history">تاريخ المدينة</a></li>
+                <li><a href="#civilizations">الحضارات</a></li>
+                <li><a href="#figures">شخصيات بارزة</a></li>
+                <li><a href="#gallery">معرض الصور</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-overlay">
+            <h1>حلب - مدينة التاريخ العريق</h1>
+            <p>واحدة من أقدم المدن المأهولة في العالم، والتي شهدت حضارات متعددة على مر العصور</p>
+        </div>
+    </section>
+
+    <section class="container history" id="history">
+        <h2>نبذة تاريخية</h2>
+        <p>تُعد مدينة حلب من أقدم المدن المأهولة باستمرار في العالم، حيث يعود تاريخها إلى الألفية السادسة قبل الميلاد. وقد ذُكرت في النصوص المسمارية منذ الألفية الثالثة قبل الميلاد.</p>
+        <p>كانت حلب مركزاً تجارياً هاماً على طريق الحرير، حيث كانت تربط بين الشرق والغرب، وبين آسيا وأوروبا، مما جعلها مدينة ذات أهمية استراتيجية على مر العصور.</p>
+        <p>لعبت المدينة دوراً محورياً في تاريخ المنطقة، وكانت عاصمة لعدة ممالك وإمارات عبر التاريخ، منها مملكة يمحاض الأمورية. وخلال العصر الإسلامي، كانت حلب ثاني أهم مدينة في بلاد الشام بعد دمشق.</p>
+        <p>تم تسجيل المدينة القديمة في حلب على قائمة التراث العالمي لليونسكو عام 1986، نظراً لأهميتها التاريخية والمعمارية.</p>
+    </section>
+
+    <section class="container civilizations" id="civilizations">
+        <h2>الحضارات التي مرت على حلب</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="الحضارة الحثية">
+                </div>
+                <div class="card-content">
+                    <h3>الحثيون</h3>
+                    <p>سيطر الحثيون على شمال سوريا بما فيها حلب خلال الألفية الثانية قبل الميلاد، وكانت المدينة تُعرف باسم "حلبا".</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="الفترة الآرامية">
+                </div>
+                <div class="card-content">
+                    <h3>الآراميون</h3>
+                    <p>استقر الآراميون في المنطقة حوالي القرن العاشر قبل الميلاد، وأسسوا دويلات صغيرة، وكانت حلب من المراكز الهامة.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="الفترة البيزنطية">
+                </div>
+                <div class="card-content">
+                    <h3>البيزنطيون</h3>
+                    <p>خضعت حلب للحكم البيزنطي بعد سقوط الإمبراطورية الرومانية الغربية، وكانت تُعرف باسم "بيرويا".</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="العصر الإسلامي">
+                </div>
+                <div class="card-content">
+                    <h3>العصر الإسلامي</h3>
+                    <p>فتحت حلب على يد المسلمين عام 637م، وشهدت ازدهاراً كبيراً خلال العصر الأموي والعباسي والفاطمي والأيوبي والمملوكي والعثماني.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container figures" id="figures">
+        <h2>شخصيات بارزة من حلب</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="سيف الدولة الحمداني">
+                </div>
+                <div class="card-content">
+                    <h3>سيف الدولة الحمداني</h3>
+                    <p>أمير الدولة الحمدانية في حلب (944-967م)، وكان راعياً للعلم والأدب، وبلاطه كان ملتقى الشعراء والعلماء، ومن أشهرهم المتنبي والفارابي.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="نور الدين زنكي">
+                </div>
+                <div class="card-content">
+                    <h3>نور الدين محمود زنكي</h3>
+                    <p>حاكم حلب ودمشق (1146-1174م)، وأحد قادة المسلمين في مواجهة الصليبيين، وقد اهتم بتحصين المدينة وبناء المساجد والمدارس.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="ابن الشحنة">
+                </div>
+                <div class="card-content">
+                    <h3>ابن الشحنة</h3>
+                    <p>محب الدين أبو الفضل محمد (1402-1485م)، من أبرز مؤرخي حلب، وصاحب كتاب "الدر المنتخب في تاريخ مملكة حلب".</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="الدكتور محمود الطحان">
+                </div>
+                <div class="card-content">
+                    <h3>الدكتور محمود الطحان</h3>
+                    <p>عالم ومفكر إسلامي سوري ولد في حلب، حصل على درجة الدكتوراه في الحديث النبوي الشريف، وعمل أستاذاً في عدة جامعات عربية.</p>
+                    <div class="card-works">
+                        <h4>من أهم مؤلفاته:</h4>
+                        <ul>
+                            <li>تيسير مصطلح الحديث</li>
+                            <li>أصول التخريج ودراسة الأسانيد</li>
+                            <li>الخطيب البغدادي (رسالته للدكتوراه)</li>
+                            <li>مَن للسنَّة اليوم؟</li>
+                            <li>عناية المحدثين بمتن الحديث كعنايتهم بالأسانيد</li>
+                            <li>مفهوم التجديد بين السنة النبوية وأدعياء التجديد</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/300" alt="أحمد عز الدين البيانوني">
+                </div>
+                <div class="card-content">
+                    <h3>أحمد عز الدين البيانوني</h3>
+                    <p>عالم سوري معاصر ولد في حلب، تخصص في علوم الشريعة الإسلامية، وقضى سنوات عديدة في التدريس والدعوة والتأليف.</p>
+                    <div class="card-works">
+                        <h4>من أهم مؤلفاته:</h4>
+                        <ul>
+                            <li>سبيل الهدى والعمل: أول ما ألف من كتبه، جمع فيه أوامر الإسلام ونواهيه على شكل وصايا</li>
+                            <li>الاجتهاد والمجتهدون: مجموعة مقالات لعلماء من العالم الإسلامي</li>
+                            <li>قبسات من نور النبوة: ألفه بالاشتراك مع الشيخ عبد الفتاح أبو غدة</li>
+                            <li>أخطاء لغوية شائعة، وتصويباتها: 500 كلمة</li>
+                            <li>مجموعة العبادات على مذهب الإمام أبي حنيفة</li>
+                            <li>التكريم الصادق بالاتباع الكامل: كتبها بمناسبة احتفالات الناس السنوية بربيع الأول</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="gallery">
+        <h2>معرض الصور</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src= C:\Users\Abuah\PycharmProjects\project_abd\mosaic-store\images\1.jpg alt="قلعة حلب">
+                </div>
+                <div class="gallery-item-title">قلعة حلب</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src="/api/placeholder/400/300" alt="الجامع الأموي في حلب">
+                </div>
+                <div class="gallery-item-title">الجامع الأموي في حلب</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src="/api/placeholder/400/300" alt="خان الوزير">
+                </div>
+                <div class="gallery-item-title">خان الوزير</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src="/api/placeholder/400/300" alt="باب أنطاكية">
+                </div>
+                <div class="gallery-item-title">باب أنطاكية</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src="/api/placeholder/400/300" alt="سوق المدينة">
+                </div>
+                <div class="gallery-item-title">سوق المدينة</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src="/api/placeholder/400/300" alt="بيوت حلب القديمة">
+                </div>
+                <div class="gallery-item-title">بيوت حلب القديمة</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>حلب - عاصمة الثقافة الإسلامية</p>
+            <p>جميع الحقوق محفوظة © 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
