@@ -58,7 +58,8 @@ function initializeLazyLoading() {
                 }
             });
         }, {
-            rootMargin: '50px'
+            rootMargin: '50px',
+            threshold: 0.1
         });
         
         lazyImages.forEach(img => {
@@ -77,10 +78,13 @@ function loadImage(img) {
     tempImg.onload = () => {
         img.classList.add('loaded');
         img.style.opacity = '1';
+        
+        // Add subtle animation when image loads
+        img.style.animation = 'imageFadeIn 0.5s ease forwards';
     };
     
     tempImg.onerror = () => {
-        img.src = '../images/placeholder.webp';
+        img.src = '../images/Aleppo/placeholder.webp';
         img.classList.add('loaded');
         img.style.opacity = '1';
     };
@@ -95,10 +99,71 @@ function initializeSmoothScroll() {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                window.scrollTo({
+                    top: target.offsetTop - 70, // Adjust for sticky nav
+                    behavior: 'smooth'
                 });
+            }
+        });
+    });
+}
+
+// Sticky navigation with scroll effect
+function initializeStickyNav() {
+    const nav = document.querySelector('nav');
+    const header = document.querySelector('header');
+    
+    if (!nav || !header) return;
+    
+    const headerHeight = header.offsetHeight;
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > headerHeight) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+}
+
+// Section animations on scroll
+function initializeSectionAnimations() {
+    if ('IntersectionObserver' in window) {
+        const sections = document.querySelectorAll('section:not(.intro)');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+        
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            sectionObserver.observe(section);
+        });
+    }
+}
+
+// Add hover effects to gallery items
+function initializeGalleryEffects() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    galleryItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.querySelector('.gallery-item-title').style.transform = 'translateY(0)';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            // Only apply if not on mobile
+            if (window.innerWidth > 768) {
+                this.querySelector('.gallery-item-title').style.transform = 'translateY(100%)';
             }
         });
     });
@@ -110,4 +175,17 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBackToTop();
     initializeLazyLoading();
     initializeSmoothScroll();
+    initializeStickyNav();
+    initializeSectionAnimations();
+    initializeGalleryEffects();
+    
+    // Add custom imageFadeIn animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes imageFadeIn {
+            from { opacity: 0; transform: scale(1.05); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    `;
+    document.head.appendChild(style);
 });
