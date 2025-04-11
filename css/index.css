@@ -258,6 +258,159 @@ footer {
     overflow: hidden;
 }
 
+/* Page transition effect */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.page-transition.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.transition-content {
+    text-align: center;
+    max-width: 700px; /* Reduced from 800px */
+    padding: 25px; /* Reduced from 30px */
+}
+
+.transition-map {
+    width: 300px; /* Reduced from 400px */
+    height: 300px; /* Reduced from 400px */
+    border: 4px solid var(--flag-green, #089938); /* Reduced from 5px */
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 25px auto; /* Reduced bottom margin */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25); /* Slightly reduced shadow */
+}
+
+.transition-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 3rem; /* Reduced from 3.5rem */
+    margin: 18px 0; /* Reduced from 20px */
+    color: #000;
+}
+
+.transition-subtitle {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 1.3rem; /* Reduced from 1.5rem */
+    margin-bottom: 22px; /* Reduced from 25px */
+    color: #555;
+}
+
+.transition-spinner {
+    width: 45px;
+    height: 45px;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--flag-green, #089938);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 10px auto 0; /* Adjusted margins to center vertically */
+    display: block;
+    position: relative; /* Ensure positioning context */
+    clear: both; /* Prevent wrapping issues */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.highlight-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(8, 153, 56, 0.7);
+    }
+    
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(8, 153, 56, 0);
+    }
+    
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(8, 153, 56, 0);
+    }
+}
+
+/* Mobile responsiveness for transition overlay */
+@media (max-width: 768px) {
+    .transition-content {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .transition-map {
+        width: 220px;
+        height: 220px;
+        margin-bottom: 20px;
+    }
+
+    .transition-title {
+        font-size: 2.2rem;
+        margin: 15px 0;
+    }
+
+    .transition-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 25px; /* Increased to leave more space for spinner */
+    }
+
+    .transition-spinner {
+        width: 40px;
+        height: 40px;
+        /* Ensure spinner is clearly visible */
+        position: relative;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .transition-map {
+        width: 180px;
+        height: 180px;
+    }
+
+    .transition-title {
+        font-size: 2rem;
+    }
+
+    .transition-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px; /* Even more space for spinner on very small screens */
+    }
+    
+    /* Make spinner more visible on small screens */
+    .transition-spinner {
+        width: 35px;
+        height: 35px;
+        border-width: 3px;
+    }
+}
+
 /* Force map to properly initialize in different environments */
 .leaflet-container {
     height: 100% !important;

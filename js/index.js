@@ -98,15 +98,82 @@ document.addEventListener('DOMContentLoaded', function () {
             className: 'governorate-path-clicked'
         });
 
-        // Short delay for visual feedback before navigation
-        setTimeout(() => {
-            if (engName) {
-                const pageName = engName.toLowerCase()
-                    .replace(/\s+/g, '-')
-                    .replace(/[\`\(\)']/g, '');
+        if (engName) {
+            const pageName = engName.toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[\`\(\)']/g, '');
+            
+            // Get the Arabic name from the translation map
+            const nameTranslations = {
+                "Aleppo": "حلب",
+                "Damascus": "دمشق",
+                "Daraa": "درعا",
+                "Dayr_Az_Zawr": "دير الزور",
+                "Hamah": "حماة",
+                "Hasaka": "الحسكة",
+                "Homs": "حمص",
+                "Idlib": "إدلب",
+                "Lattakia": "اللاذقية",
+                "Quneitra": "القنيطرة",
+                "Ar_Raqqah": "الرقة",
+                "Rif_Dimashq": "ريف دمشق",
+                "As_Suwayda": "السويداء",
+                "Tartus": "طرطوس"
+            };
+            
+            const arabicName = nameTranslations[engName] || engName;
+            
+            // Create a transition effect
+            const pageTransition = document.getElementById('pageTransition');
+            const transitionTitle = document.getElementById('transitionTitle');
+            const transitionSubtitle = document.getElementById('transitionSubtitle');
+            const transitionMap = document.getElementById('transitionMap');
+            
+            // Set the content for the transition
+            transitionTitle.textContent = arabicName;
+            transitionSubtitle.textContent = "جاري الانتقال إلى صفحة المدينة...";
+            
+            // Create a mini map in the transition focused on the selected governorate
+            const miniMap = L.map(transitionMap, {
+                center: layer.getBounds().getCenter(),
+                zoom: 8,
+                zoomControl: false,
+                attributionControl: false,
+                dragging: false,
+                touchZoom: false,
+                scrollWheelZoom: false,
+                doubleClickZoom: false,
+                boxZoom: false
+            });
+            
+            // Add the tile layer to the mini map
+            L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}{r}?access_token=pk.eyJ1IjoiamFzYXNkMTIiLCJhIjoiY205ZDZrcW0zMDdkejJrc2F4ZTU0ZWRmNyJ9.lPUX9ceswcGjrjl2e-k3Bg', {
+                maxZoom: 19,
+                tileSize: 512,
+                zoomOffset: -1
+            }).addTo(miniMap);
+            
+            // Add the selected governorate to the mini map with a highlight style
+            const selectedGeoJSON = L.geoJSON(layer.feature, {
+                style: {
+                    fillColor: governorateColors[engName] || '#F4A460',
+                    weight: 2,
+                    color: '#FFD700',
+                    fillOpacity: 0.8
+                }
+            }).addTo(miniMap);
+            
+            // Fit the mini map to the governorate bounds with padding
+            miniMap.fitBounds(selectedGeoJSON.getBounds().pad(0.1));
+            
+            // Show the transition
+            pageTransition.classList.add('active');
+            
+            // Navigate after a delay
+            setTimeout(() => {
                 window.location.href = `cities/${pageName}.html`;
-            }
-        }, 200);
+            }, 1500);
+        }
     }
 
     // Function defining actions for each feature
