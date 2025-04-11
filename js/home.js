@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize the map - Coordinates centered roughly on Syria
     const map = L.map('map').setView([35.0, 38.0], 6);
 
-    // Optional: Add a base tile layer (e.g., OpenStreetMap)
     // Use Mapbox's satellite-streets style which combines satellite imagery with labels
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiamFzYXNkMTIiLCJhIjoiY205ZDZrcW0zMDdkejJrc2F4ZTU0ZWRmNyJ9.lPUX9ceswcGjrjl2e-k3Bg', {
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a>',
@@ -20,18 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- Color mapping for governorates (Based on provided image) ---
     const governorateColors = {
         'Aleppo': '#F4A460',          // Sandy Brown / Pinkish
-        'Damascus': '#9ACD32',        // YellowGreen (Distinct from Rif Dimashq)
-        'Dar`a': '#D2B48C',           // Tan
-        'Dayr Az Zawr': '#FFFACD',     // Lemon Chiffon / Pale Yellow
+        'Damascus': '#9ACD32',        // YellowGreen (Distinct from Rif_Dimashq)
+        'Daraa': '#D2B48C',           // Tan
+        'Dayr_Az_Zawr': '#FFFACD',     // Lemon Chiffon / Pale Yellow
         'Hamah': '#E6E6FA',            // Lavender / Off-white gray
-        'Hasaka (Al Haksa)': '#B0C4DE', // Light Steel Blue / Grayish Blue
-        'Homs (Hims)': '#FFA07A',        // Light Salmon / Orange-Tan
+        'Hasaka': '#B0C4DE', // Light Steel Blue / Grayish Blue
+        'Homs': '#FFA07A',        // Light Salmon / Orange-Tan
         'Idlib': '#D8BFD8',            // Thistle / Light Purple-Gray
         'Lattakia': '#AFEEEE',          // Pale Turquoise / Light Blue-Aqua
         'Quneitra': '#D3D3D3',          // Light Gray
-        'Ar Raqqah': '#DDA0DD',         // Plum / Lilac
-        'Rif Dimashq': '#98FB98',       // Pale Green / Mint
-        'As Suwayda': '#8FBC8F',      // Dark Sea Green / Tealish (Corrected quote)
+        'Ar_Raqqah': '#DDA0DD',         // Plum / Lilac
+        'Rif_Dimashq': '#98FB98',       // Pale Green / Mint
+        'As_Suwayda': '#8FBC8F',      // Dark Sea Green / Tealish (Corrected quote)
         'Tartus': '#DB7093'            // Pale Violet Red / Purple-Pink
         // Verify these keys exactly match the names in your GeoJSON properties
     };
@@ -92,17 +91,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const nameTranslations = {
             "Aleppo": "حلب",
             "Damascus": "دمشق",
-            "Dar`a": "درعا",
-            "Dayr Az Zawr": "دير الزور",
+            "Daraa": "درعا",
+            "Dayr_Az_Zawr": "دير الزور",
             "Hamah": "حماة",
-            "Hasaka (Al Haksa)": "الحسكة",
-            "Homs (Hims)": "حمص",
+            "Hasaka": "الحسكة",
+            "Homs": "حمص",
             "Idlib": "إدلب",
             "Lattakia": "اللاذقية",
             "Quneitra": "القنيطرة",
-            "Ar Raqqah": "الرقة",
-            "Rif Dimashq": "ريف دمشق",
-            "As Suwayda": "السويداء",
+            "Ar_Raqqah": "الرقة",
+            "Rif_Dimashq": "ريف دمشق",
+            "As_Suwayda": "السويداء",
             "Tartus": "طرطوس"
         };
 

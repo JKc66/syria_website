@@ -2301,7 +2301,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYHI", 
-        "name": "Homs (Hims)"
+        "name": "Homs"
       }, 
       "id": 1
     }, 
@@ -4667,7 +4667,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYRD", 
-        "name": "Rif Dimashq"
+        "name": "Rif_Dimashq"
       }, 
       "id": 3
     }, 
@@ -5155,7 +5155,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYHA", 
-        "name": "Hasaka (Al Haksa)"
+        "name": "Hasaka"
       }, 
       "id": 4
     }, 
@@ -5727,7 +5727,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYRA", 
-        "name": "Ar Raqqah"
+        "name": "Ar_Raqqah"
       }, 
       "id": 5
     }, 
@@ -9675,7 +9675,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYSU", 
-        "name": "As Suwayda"
+        "name": "As_Suwayda"
       }, 
       "id": 9
     }, 
@@ -11267,7 +11267,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYDR", 
-        "name": "Dar`a"
+        "name": "Daraa"
       }, 
       "id": 10
     }, 
@@ -11515,7 +11515,7 @@
       "properties": {
         "source": "https://simplemaps.com", 
         "id": "SYDY", 
-        "name": "Dayr Az Zawr"
+        "name": "Dayr_Az_Zawr"
       }, 
       "id": 11
     }, 
