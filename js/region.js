@@ -20,20 +20,14 @@ function initializeMobileMenu() {
     });
 }
 
-// Back to top button functionality
+// Back to top button functionality - always visible
 function initializeBackToTop() {
     const backToTopButton = document.querySelector('.back-to-top');
-    const scrollThreshold = 300;
     
-    const handleScroll = () => {
-        if (window.pageYOffset > scrollThreshold) {
-            backToTopButton.classList.add('visible');
-        } else {
-            backToTopButton.classList.remove('visible');
-        }
-    };
+    if (!backToTopButton) return;
     
-    window.addEventListener('scroll', handleScroll);
+    // Make sure the button is visible immediately
+    backToTopButton.classList.add('visible');
     
     backToTopButton.addEventListener('click', (e) => {
         e.preventDefault();
