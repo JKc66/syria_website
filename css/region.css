@@ -90,6 +90,7 @@ header h1 {
     letter-spacing: 1px;
     background: linear-gradient(to right, #ffffff, #f0f0f0);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
 }
@@ -298,7 +299,7 @@ p {
     position: relative;
     height: 250px;
     overflow: hidden;
-    border-bottom: 3px solid var(--green);
+    border-bottom: 3px solid var (--green);
 }
 
 .card-img::after {
@@ -669,6 +670,7 @@ img.loaded {
     letter-spacing: 1px;
     background: linear-gradient(to right, #ffffff, #e0e0e0);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
     display: inline-block;
