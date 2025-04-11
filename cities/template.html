@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تاريخ وحضارة مدينة [CITY_NAME_AR] - [CITY_DESCRIPTION]">
+    <title>مدينة [CITY_NAME_AR] - تاريخ وحضارة</title>
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <link rel="shortcut icon" href="../favicon/favicon.ico">
+    
+    <link rel="stylesheet" href="../css/region.css">
+    
+    <style>
+        /* City-specific style override for intro background */
+        .intro {
+            background: url('../images/[CITY_NAME_EN]/[MAIN_IMAGE]') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>محافظات سوريا</h1>
+            <p>[CITY_NAME_AR] - [CITY_SLOGAN]</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <button class="dropdown-menu-button" aria-label="القائمة">القائمة &#9776;</button>
+            <ul>
+                <li><a href="#history">تاريخ المدينة</a></li>
+                <li><a href="#civilizations">الحضارات</a></li>
+                <li><a href="#figures">شخصيات بارزة</a></li>
+                <li><a href="#gallery">معرض الصور</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="intro">
+        <div class="intro-overlay">
+            <h1>[CITY_NAME_AR] - [CITY_TITLE]</h1>
+            <p>[CITY_INTRO]</p>
+            <div class="intro-separator"></div>
+        </div>
+    </section>
+
+    <section class="container history" id="history">
+        <h2>نبذة تاريخية</h2>
+        <!-- أدخل هنا معلومات تاريخية عن المدينة -->
+        <p>تاريخ المدينة هنا...</p>
+        <p>معلومات إضافية...</p>
+    </section>
+
+    <section class="container civilizations" id="civilizations">
+        <h2>الحضارات التي مرت على [CITY_NAME_AR]</h2>
+        <div class="grid">
+            <!-- قم بنسخ هذا النموذج وتكراره لكل حضارة -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="../images/[CITY_NAME_EN]/[IMAGE_FILENAME]" alt="[CIV_NAME]" class="lazy-image">
+                </div>
+                <div class="card-content">
+                    <h3>[CIV_NAME]</h3>
+                    <p>[CIV_DESCRIPTION]</p>
+                </div>
+            </div>
+            
+            <!-- كرر البطاقات حسب الحاجة -->
+        </div>
+    </section>
+
+    <section class="container figures" id="figures">
+        <h2>شخصيات بارزة من [CITY_NAME_AR]</h2>
+        <div class="grid">
+            <!-- قم بنسخ هذا النموذج وتكراره لكل شخصية -->
+            <div class="card">
+                <div class="card-img">
+                    <img src="../images/[CITY_NAME_EN]/[IMAGE_FILENAME]" alt="[FIGURE_NAME]" class="lazy-image">
+                </div>
+                <div class="card-content">
+                    <h3>[FIGURE_NAME]</h3>
+                    <p>[FIGURE_DESCRIPTION]</p>
+                    <!-- لإضافة قائمة بالأعمال استخدم الكود التالي -->
+                    <div class="card-works">
+                        <h4>من أهم [WORKS_TYPE]:</h4>
+                        <ul>
+                            <li>[WORK_1]</li>
+                            <li>[WORK_2]</li>
+                            <!-- أضف المزيد من العناصر حسب الحاجة -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- كرر البطاقات حسب الحاجة -->
+        </div>
+    </section>
+
+    <section class="container" id="gallery">
+        <h2>معرض الصور</h2>
+        <div class="gallery">
+            <!-- قم بنسخ هذا النموذج وتكراره لكل صورة -->
+            <div class="gallery-item">
+                <div class="gallery-item-img">
+                    <img src="../images/[CITY_NAME_EN]/[IMAGE_FILENAME]" alt="[IMAGE_TITLE]" class="lazy-image">
+                </div>
+                <div class="gallery-item-title">[IMAGE_TITLE]</div>
+            </div>
+            
+            <!-- كرر العناصر حسب الحاجة -->
+        </div>
+    </section>
+
+    <div class="container" style="text-align: center; margin: 3rem auto;">
+        <a href="../index.html" class="home-button">العودة إلى الصفحة الرئيسية</a>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>[CITY_NAME_AR] - [CITY_FOOTER_TEXT]</p>
+            <p>جميع الحقوق محفوظة © <span id="current-year">2025</span></p>
+        </div>
+    </footer>
+
+    <script src="../js/region.js"></script>
+    <script>
+        // تحديث سنة حقوق النشر تلقائيًا
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
