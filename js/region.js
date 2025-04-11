@@ -60,7 +60,7 @@ function loadImage(img) {
     };
     
     tempImg.onerror = () => {
-        img.src = '../images/Aleppo/placeholder.webp';
+        img.src = '../images/placeholder.webp';
         img.classList.add('loaded');
         img.style.opacity = '1';
     };
