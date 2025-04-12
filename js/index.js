@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Add loading class to body
+    document.body.classList.add('loading');
+    
+    // Show loader when page loads
+    const mapLoader = document.getElementById('mapLoader');
+    mapLoader.classList.add('active');
+    
     // Initialize the map with a more specific center point for Syria
     const map = L.map('map', {
         center: [35.0, 38.5], // Adjusted center coordinates
@@ -169,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Fit the mini map to the governorate bounds with padding
             miniMap.fitBounds(selectedGeoJSON.getBounds().pad(0.1));
             
-            // Show the transition
+            // Show the transition with our custom loader
             pageTransition.classList.add('active');
             
             // Navigate after a delay
@@ -250,6 +257,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Handle window beforeunload to show loader when navigating away
+    window.addEventListener('beforeunload', function() {
+        // Show loader when navigating away or refreshing
+        mapLoader.classList.add('active');
+        document.body.classList.add('loading');
+    });
+    
+    // Handle page visibility changes to show loader when returning to the tab
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible') {
+            // Show loader briefly when returning to the page
+            mapLoader.classList.add('active');
+            document.body.classList.add('loading');
+            
+            // Hide it after a short delay
+            setTimeout(() => {
+                mapLoader.classList.remove('active');
+                document.body.classList.remove('loading');
+            }, 800);
+        }
+    });
+    
+    // Make sure the loader is displayed during initial load
+    window.addEventListener('load', function() {
+        mapLoader.classList.add('active');
+    });
+
     // Fetch GeoJSON data and add it to the map
     fetch('syria-governorates.geojson')
         .then(response => {
@@ -274,11 +308,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 
                 // Force a refresh of the map
                 map.invalidateSize();
-            }, 300);
+                
+                // Hide loader when map is ready and remove loading class
+                mapLoader.classList.remove('active');
+                document.body.classList.remove('loading');
+            }, 800); // Increased delay to ensure map is fully loaded
         })
         .catch(error => {
             console.error('Error loading or parsing GeoJSON:', error);
-            // Display error message to the user
+            // Hide loader and display error message to the user
+            mapLoader.classList.remove('active');
+            document.body.classList.remove('loading');
             const mapDiv = document.getElementById('map');
             mapDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Could not load map data. Please check the GeoJSON file or network connection.</p>';
             mapDiv.style.height = 'auto'; // Adjust height if map fails

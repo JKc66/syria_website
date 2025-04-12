@@ -257,6 +257,9 @@ footer {
     text-align: center;
     max-width: 700px; /* Reduced from 800px */
     padding: 25px; /* Reduced from 30px */
+    background: rgba(255,255,255,0.88); /* More opaque background */
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .transition-map {
@@ -283,7 +286,7 @@ footer {
     color: #555;
 }
 
-/* Modern animated spinner: 3 bouncing dots */
+/* Modern animated spinner: 3 balls in Syrian flag colors */
 .transition-spinner {
     width: 60px;
     height: 24px;
@@ -299,18 +302,22 @@ footer {
     width: 14px;
     height: 14px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--flag-green, #089938) 60%, #CE1126 100%);
+    background: var(--flag-green, #089938);
     box-shadow: 0 2px 8px rgba(8,153,56,0.15);
     animation: spinner-bounce 1.2s infinite cubic-bezier(.6,0,.4,1);
 }
 .transition-spinner-dot:nth-child(2) {
     animation-delay: 0.2s;
-    background: linear-gradient(135deg, #CE1126 60%, var(--flag-green, #089938) 100%);
+    background: var(--flag-white, #FFFFFF);
+    box-shadow: 0 2px 8px rgba(255,255,255,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
 }
 .transition-spinner-dot:nth-child(3) {
     animation-delay: 0.4s;
-    background: linear-gradient(135deg, #000 60%, #CE1126 100%);
+    background: var(--flag-black, #000000);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+
 @keyframes spinner-bounce {
     0%, 80%, 100% { transform: translateY(0) scale(1);}
     40% { transform: translateY(-14px) scale(1.15);}
@@ -483,4 +490,185 @@ footer {
 
 .leaflet-tooltip-top:before {
     border-top-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Modern loader animation with Syria flag colors */
+.loader {
+  --s: 45px; /* Increased size */
+  --g: 5px;  
+  
+  height: calc(var(--s) + var(--g));
+  aspect-ratio: 3;
+  position: relative;
+  display: none; /* Hidden by default, shown when needed */
+  margin: 25px auto; /* Increased margin */
+  overflow: visible; /* Allow shadows to overflow */
+}
+
+/* Animated balls in Syrian flag colors with improved visibility */
+.loader::before,
+.loader::after,
+.loader > span {
+  content: "";
+  position: absolute;
+  width: calc(var(--s)/2.5); /* Slightly larger dots */
+  height: calc(var(--s)/2.5);
+  border-radius: 50%;
+  top: calc(var(--s)/10);
+  animation: l11-ball 1.5s infinite ease-in-out;
+}
+
+/* Green ball */
+.loader::before {
+  background-color: var(--flag-green, #089938);
+  left: 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* White ball */
+.loader > span {
+  background-color: var(--flag-white, #FFFFFF);
+  left: calc(50% - var(--s)/5);
+  border: 1px solid rgba(0,0,0,0.1);
+  animation-delay: 0.15s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Black ball */
+.loader::after {
+  background-color: var(--flag-black, #000000);
+  right: 0;
+  animation-delay: 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Improved animation with more dramatic effect */
+@keyframes l11-ball {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  }
+  50% { 
+    transform: translateY(-12px) scale(1.05); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  }
+}
+
+/* Add red star on top of the white ball */
+.loader > span::before {
+  content: "★";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--flag-red, #CE1126);
+  font-size: 14px; /* Larger star */
+  text-shadow: 0 0 1px rgba(0,0,0,0.3);
+}
+
+/* Clear background around the loader to make it stand out */
+.loader.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.75); /* Semi-transparent background */
+  padding: 15px 30px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  z-index: 1000;
+  gap: 20px;
+}
+
+/* Special styling for transition loader */
+#pageTransition .loader.active {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  margin: 10px auto;
+  transform: scale(1.1); /* Make transition loader slightly bigger */
+}
+
+/* Style for the dots container in page transition to look like in your image */
+#pageTransition .loader.active::before,
+#pageTransition .loader.active::after,
+#pageTransition .loader.active > span {
+    width: 16px;
+    height: 16px;
+}
+
+/* Adjust spacing for the dots in transition */
+#pageTransition .loader.active::before {
+    left: calc(50% - 30px); /* Position left dot */
+}
+
+#pageTransition .loader.active > span {
+    left: calc(50% - 8px); /* Position middle dot */
+}
+
+#pageTransition .loader.active::after {
+    left: auto;
+    right: calc(50% - 30px); /* Position right dot */
+}
+
+/* Positioning fix for map loader */
+#mapLoader.active {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  width: 180px; /* Fixed width to match screenshot */
+  height: 50px; /* Fixed height to match screenshot */
+  background: rgba(255,255,255,0.85); /* More opaque background */
+  border-radius: 30px; /* More rounded corners */
+  padding: 12px 10px; /* Adjusted padding */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Subtle shadow */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Spacing between balls */
+}
+
+/* Position and size the balls properly */
+#mapLoader.active::before,
+#mapLoader.active::after,
+#mapLoader.active > span {
+  position: static; /* Override the absolute positioning */
+  width: 20px; /* Fixed size to match screenshot */
+  height: 20px; /* Fixed size to match screenshot */
+  margin: 0 10px; /* Horizontal spacing */
+  top: auto; /* Reset top position */
+}
+
+/* Green ball */
+#mapLoader.active::before {
+  background-color: var(--flag-green, #089938);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* White ball with red star */
+#mapLoader.active > span {
+  background-color: var(--flag-white, #FFFFFF);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Black ball */
+#mapLoader.active::after {
+  background-color: var(--flag-black, #000000);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Make the page reload and transition loaders consistent */
+.loader.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Make sure the loader stays visible during page loads */
+body.loading #mapLoader.active {
+  display: flex !important;
+  opacity: 1 !important;
 }

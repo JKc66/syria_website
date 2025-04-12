@@ -46,8 +46,10 @@
             <h1>الجمهورية العربية السورية</h1>
         </header>
 
-        <!-- Map container div -->
-        <div id="map"></div>
+        <!-- Map container div with loader -->
+        <div id="map">
+            <div class="loader" id="mapLoader"><span></span></div>
+        </div>
 
         <footer>
             <p> جناح سوريا - مهرجان الثقافات و الشعوب  2025 © </p>
@@ -60,11 +62,8 @@
             <div id="transitionMap" class="transition-map highlight-pulse"></div>
             <h2 id="transitionTitle" class="transition-title"></h2>
             <p id="transitionSubtitle" class="transition-subtitle"></p>
-            <div class="transition-spinner">
-                <span class="transition-spinner-dot"></span>
-                <span class="transition-spinner-dot"></span>
-                <span class="transition-spinner-dot"></span>
-            </div>
+            <!-- Loader with Syrian flag-colored balls -->
+            <div class="loader active"><span></span></div>
         </div>
     </div>
 
