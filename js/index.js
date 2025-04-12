@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
         'Rif_Dimashq': '#98FB98',       // Pale Green / Mint
         'As_Suwayda': '#8FBC8F',      // Dark Sea Green / Tealish (Corrected quote)
         'Tartus': '#DB7093'            // Pale Violet Red / Purple-Pink
-        // Verify these keys exactly match the names in your GeoJSON properties
     };
 
     // Function to style the governorates
@@ -109,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Keep the exact name with underscores as is
             const pageName = engName;
             
-            // Get the Arabic name from the translation map
             const nameTranslations = {
                 "Aleppo": "حلب",
                 "Damascus": "دمشق",
