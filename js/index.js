@@ -279,11 +279,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     
-    // Make sure the loader is displayed during initial load
-    window.addEventListener('load', function() {
-        mapLoader.classList.add('active');
-    });
-
     // Fetch GeoJSON data and add it to the map
     fetch('syria-governorates.geojson')
         .then(response => {
