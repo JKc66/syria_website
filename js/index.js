@@ -106,11 +106,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (engName) {
-            // Fix: Keep first letter capital, rest lowercase to match actual filenames
-            const pageName = engName.charAt(0).toUpperCase() + engName.slice(1).toLowerCase()
-                .replace(/\s+/g, '-')
-                .replace(/[\`\(\)']/g, '')
-                .replace(/_/g, '_'); // Preserve underscores
+            // Keep the exact name with underscores as is
+            const pageName = engName;
             
             // Get the Arabic name from the translation map
             const nameTranslations = {
