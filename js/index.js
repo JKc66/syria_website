@@ -282,4 +282,13 @@ document.addEventListener('DOMContentLoaded', function () {
             mapDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Could not load map data. Please check the GeoJSON file or network connection.</p>';
             mapDiv.style.height = 'auto'; // Adjust height if map fails
         });
+        
+        window.addEventListener('pageshow', function(event) {
+            const pageTransition = document.getElementById('pageTransition');
+            console.log('pageshow event:', pageTransition.classList.contains('active'));
+        });
+        window.addEventListener('popstate', function(event) {
+            const pageTransition = document.getElementById('pageTransition');
+            console.log('popstate event:', pageTransition.classList.contains('active'));
+        });
 });
