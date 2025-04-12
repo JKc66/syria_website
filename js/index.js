@@ -40,14 +40,14 @@ document.addEventListener('DOMContentLoaded', function () {
         'Daraa': '#D2B48C',           // Tan
         'Dayr_Az_Zawr': '#FFFACD',     // Lemon Chiffon / Pale Yellow
         'Hamah': '#E6E6FA',            // Lavender / Off-white gray
-        'Hasaka': '#B0C4DE', // Light Steel Blue / Grayish Blue
-        'Homs': '#FFA07A',        // Light Salmon / Orange-Tan
+        'Hasaka': '#B0C4DE',          // Light Steel Blue / Grayish Blue
+        'Homs': '#FFA07A',            // Light Salmon / Orange-Tan
         'Idlib': '#D8BFD8',            // Thistle / Light Purple-Gray
         'Lattakia': '#AFEEEE',          // Pale Turquoise / Light Blue-Aqua
         'Quneitra': '#D3D3D3',          // Light Gray
         'Ar_Raqqah': '#DDA0DD',         // Plum / Lilac
         'Rif_Dimashq': '#98FB98',       // Pale Green / Mint
-        'As_Suwayda': '#8FBC8F',      // Dark Sea Green / Tealish (Corrected quote)
+        'As_Suwayda': '#8FBC8F',       // Dark Sea Green / Tealish
         'Tartus': '#DB7093'            // Pale Violet Red / Purple-Pink
     };
 
@@ -105,9 +105,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         if (engName) {
-            // Keep the exact name with underscores as is
+            // Keep the exact name as is for the HTML file
             const pageName = engName;
             
+            // Get the Arabic name from the translation map
             const nameTranslations = {
                 "Aleppo": "حلب",
                 "Damascus": "دمشق",
@@ -120,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 "Lattakia": "اللاذقية",
                 "Quneitra": "القنيطرة",
                 "Ar_Raqqah": "الرقة",
-                "Rif_Dimashq": "ريف دمشق",
+                "Rif_Dimashq": "ريف دمشق", 
                 "As_Suwayda": "السويداء",
                 "Tartus": "طرطوس"
             };
