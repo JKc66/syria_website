@@ -12,29 +12,31 @@ body {
     color: #000000;
     min-height: 100vh;
     height: 100vh;
-    padding: 10px;
-    margin: 0;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 10px;
+    max-width: 1000px;
+    width: 95%;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    flex: 1;
+    height: 98vh;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     text-align: right;
-    padding: 10px;
+    padding: 5px;
     background-color: #f8f8f8;
-    border-radius: 8px;
+    border-radius: 10px 10px 0 0;
     box-shadow: 0 3px 10px rgba(0,0,0,0.15);
     background: linear-gradient(to bottom, #ffffff, #f0f0f0);
     display: flex;
@@ -162,10 +164,10 @@ h1 {
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     border-top: 1px solid #ccc;
     background-color: #f8f8f8;
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 10px 10px;
     background: linear-gradient(to bottom, #f8f8f8, #eeeeee);
     flex-shrink: 0;
 }
@@ -215,9 +217,9 @@ footer {
     flex: 1;
     width: 100%;
     min-height: 500px; /* Ensure minimum height */
-    margin: 10px auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    margin: 0;
+    border: none;
+    border-radius: 0;
     position: relative;
     display: block;
     overflow: hidden;

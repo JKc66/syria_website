@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Add info overlay
             const infoOverlay = document.createElement('div');
             infoOverlay.className = 'map-info-overlay';
-            infoOverlay.innerHTML = 'انقر على أي منطقة للتعرف على المزيد ✨';
+            infoOverlay.innerHTML = 'انقر على أي منطقة للتعرف على المزيد 🗺️';
             document.getElementById('map').appendChild(infoOverlay);
             
             // Remove the overlay after animation
