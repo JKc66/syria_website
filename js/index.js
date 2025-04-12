@@ -283,12 +283,17 @@ document.addEventListener('DOMContentLoaded', function () {
             mapDiv.style.height = 'auto'; // Adjust height if map fails
         });
         
-        window.addEventListener('pageshow', function(event) {
+        function resetPageTransitionOverlay() {
             const pageTransition = document.getElementById('pageTransition');
-            console.log('pageshow event:', pageTransition.classList.contains('active'));
-        });
-        window.addEventListener('popstate', function(event) {
-            const pageTransition = document.getElementById('pageTransition');
-            console.log('popstate event:', pageTransition.classList.contains('active'));
-        });
+            if (pageTransition) {
+                pageTransition.classList.remove('active');
+                // Optionally clear the mini map to avoid Leaflet errors
+                const transitionMap = document.getElementById('transitionMap');
+                if (transitionMap) {
+                    transitionMap.innerHTML = '';
+                }
+            }
+        }
+        window.addEventListener('pageshow', resetPageTransitionOverlay);
+        window.addEventListener('popstate', resetPageTransitionOverlay);
 });
