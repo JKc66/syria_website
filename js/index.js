@@ -1,28 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Always hide the transition overlay and clear mini-map on page load (including back/forward navigation)
-    const pageTransition = document.getElementById('pageTransition');
-    if (pageTransition) {
-        pageTransition.classList.remove('active');
-    }
-    const transitionMap = document.getElementById('transitionMap');
-    if (transitionMap) {
-        transitionMap.innerHTML = '';
-    }
-});
-
-// Also handle bfcache restores (back/forward navigation)
-window.addEventListener('pageshow', function () {
-    const pageTransition = document.getElementById('pageTransition');
-    if (pageTransition) {
-        pageTransition.classList.remove('active');
-    }
-    const transitionMap = document.getElementById('transitionMap');
-    if (transitionMap) {
-        transitionMap.innerHTML = '';
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function () {
     // Initialize the map with a more specific center point for Syria
     const map = L.map('map', {
         center: [35.0, 38.5], // Adjusted center coordinates
