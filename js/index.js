@@ -147,7 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 doubleClickZoom: false,
                 boxZoom: false
             });
-            
+            // Store the mini map instance globally for cleanup
+    window.transitionMiniMap = miniMap;
             // Add the tile layer to the mini map
             L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}{r}?access_token=pk.eyJ1IjoiamFzYXNkMTIiLCJhIjoiY205ZDZrcW0zMDdkejJrc2F4ZTU0ZWRmNyJ9.lPUX9ceswcGjrjl2e-k3Bg', {
                 maxZoom: 19,
@@ -284,10 +285,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         
         function resetPageTransitionOverlay() {
+            // Properly destroy the mini map if it exists
+            if (window.transitionMiniMap) {
+                window.transitionMiniMap.remove();
+                window.transitionMiniMap = null;
+            }
             const pageTransition = document.getElementById('pageTransition');
             if (pageTransition) {
                 pageTransition.classList.remove('active');
-                // Optionally clear the mini map to avoid Leaflet errors
+                // Optionally clear the mini map container
                 const transitionMap = document.getElementById('transitionMap');
                 if (transitionMap) {
                     transitionMap.innerHTML = '';
