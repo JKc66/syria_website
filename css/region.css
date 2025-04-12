@@ -636,7 +636,7 @@ img.loaded {
 .intro {
     position: relative;
     height: 450px;
-    background: url('../images/Aleppo/قلعة_حلب.jpg') center/cover no-repeat;
+    background: center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -646,6 +646,63 @@ img.loaded {
     border-radius: 0 0 50px 50px;
     overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* City-specific background images */
+.intro.aleppo {
+    background-image: url('../images/Aleppo/قلعة_حلب.jpg');
+}
+
+.intro.damascus {
+    background-image: url('../images/Damascus/جبل_قاسيون.jpg');
+}
+
+.intro.homs {
+    background-image: url('../images/Homs/homs_citadel.jpg');
+}
+
+.intro.hamah {
+    background-image: url('../images/Hamah/norias.jpg');
+}
+
+.intro.idlib {
+    background-image: url('../images/Idlib/dead_cities.jpg');
+}
+
+.intro.hasaka {
+    background-image: url('../images/Hasaka/hasaka_city.jpg');
+}
+
+.intro.tartus {
+    background-image: url('../images/Tartus/arwad_island.jpg');
+}
+
+.intro.daraa {
+    background-image: url('../images/Daraa/bosra_amphitheater.jpg');
+}
+
+.intro.ar-raqqah {
+    background-image: url('../images/Ar_Raqqah/raqqah_city.jpg');
+}
+
+.intro.as-suwayda {
+    background-image: url('../images/As_Suwayda/suwayda_ruins.jpg');
+}
+
+.intro.dayr-az-zawr {
+    background-image: url('../images/Dayr_Az_Zawr/deir_ez_zor.jpg');
+}
+
+.intro.lattakia {
+    background-image: url('../images/Lattakia/lattakia_coast.jpg');
+}
+
+.intro.quneitra {
+    background-image: url('../images/Quneitra/quneitra_ruins.jpg');
+}
+
+.intro.rif-dimashq {
+    background-image: url('../images/Rif_Dimashq/damascus_countryside.jpg');
 }
 
 .intro::before {
