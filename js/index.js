@@ -298,6 +298,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 onEachFeature: onEachFeature
             }).addTo(map);
 
+            // Add info overlay
+            const infoOverlay = document.createElement('div');
+            infoOverlay.className = 'map-info-overlay';
+            infoOverlay.innerHTML = 'انقر على أي منطقة للتعرف على المزيد ✨';
+            document.getElementById('map').appendChild(infoOverlay);
+            
+            // Remove the overlay after animation
+            setTimeout(() => {
+                infoOverlay.remove();
+            }, 10000); // Remove after 10 seconds
+
             setTimeout(() => {
                 const bounds = geojsonLayer.getBounds();
                 // Add padding only to the sides, not to the center position

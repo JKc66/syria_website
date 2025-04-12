@@ -672,3 +672,40 @@ body.loading #mapLoader.active {
   display: flex !important;
   opacity: 1 !important;
 }
+
+/* Info overlay styles */
+.map-info-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 16px;
+    direction: rtl;
+    animation: fadeInOut 5s forwards;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .map-info-overlay {
+        top: auto;
+        bottom: 70px;
+        right: 50%;
+        transform: translateX(50%);
+        font-size: 14px;
+        text-align: center;
+        width: 80%;
+        max-width: 300px;
+    }
+}
