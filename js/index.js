@@ -270,13 +270,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 interactive: false,
                 zIndexOffset: 1000 // Ensure labels are on top
             }).addTo(map);
-
-            // Add a dotted country border overlay
         }
     }
 
     // Fetch GeoJSON data and add it to the map
-    console.log('Fetching GeoJSON...');
     fetch('syria-governorates.geojson')
         .then(response => {
             if (!response.ok) {
@@ -290,50 +287,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 onEachFeature: onEachFeature
             }).addTo(map);
 
-            // Add a dotted country border overlay
-            try {
-                L.geoJSON(data, {
-                    style: function(feature) {
-                        return {
-                            fillOpacity: 0,
-                            color: '#222', // dark border
-                            weight: 3,
-                            dashArray: '4 4',
-                            interactive: false
-                        };
-                    },
-                    interactive: false
-                }).addTo(map);
-            } catch (borderError) {
-                console.error('Error adding dotted border overlay:', borderError);
-            }
-
             // Wait a moment for rendering and then adjust the view
             setTimeout(() => {
                 // Get the bounds of the loaded governorates layer
                 const bounds = geojsonLayer.getBounds();
-
-                // On mobile, use more padding to ensure the whole map is visible
-                const isMobile = window.innerWidth <= 768;
-                const padding = isMobile ? 0.18 : 0.1;
-                map.fitBounds(bounds.pad(padding));
-
+                
+                // Add a bit more padding to ensure everything is visible
+                map.fitBounds(bounds.pad(0.1));
+                
                 // Force a refresh of the map
                 map.invalidateSize();
-
-                // On mobile, zoom out one more level if possible
-                if (isMobile) {
-                    const currentZoom = map.getZoom();
-                    const minZoom = map.getMinZoom ? map.getMinZoom() : 6.5;
-                    if (currentZoom > minZoom) {
-                        map.setZoom(currentZoom - 1);
-                    }
-                }
             }, 300);
         })
         .catch(error => {
             console.error('Error loading or parsing GeoJSON:', error);
-            alert('GeoJSON load error: ' + error);
             // Display error message to the user
             const mapDiv = document.getElementById('map');
             mapDiv.innerHTML = '<p style="color: red; text-align: center; padding: 20px;">Could not load map data. Please check the GeoJSON file or network connection.</p>';
