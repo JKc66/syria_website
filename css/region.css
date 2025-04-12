@@ -682,27 +682,27 @@ img.loaded {
 }
 
 .intro.ar-raqqah {
-    background-image: url('../images/Ar_Raqqah/raqqah_city.jpg');
+    background-image: url('../images/Ar_Raqqah/سور_الرقة_الأثري.jpg');
 }
 
 .intro.as-suwayda {
-    background-image: url('../images/As_Suwayda/suwayda_ruins.jpg');
+    background-image: url('../images/As_Suwayda/تلال_السويداء_البركانية.jpg');
 }
 
 .intro.dayr-az-zawr {
-    background-image: url('../images/Dayr_Az_Zawr/deir_ez_zor.jpg');
+    background-image: url('../images/Dayr_Az_Zawr/متحف_دير_الزور.jpg');
 }
 
 .intro.lattakia {
-    background-image: url('../images/Lattakia/lattakia_coast.jpg');
+    background-image: url('../images/Lattakia/ميناء_اللاذقية.webp');
 }
 
 .intro.quneitra {
-    background-image: url('../images/Quneitra/quneitra_ruins.jpg');
+    background-image: url('../images/Quneitra/تل_الكوم_الأثري.webp');
 }
 
 .intro.rif-dimashq {
-    background-image: url('../images/Rif_Dimashq/damascus_countryside.jpg');
+    background-image: url('../images/Rif_Dimashq/بلدة_صيدنايا.jpg');
 }
 
 .intro::before {
