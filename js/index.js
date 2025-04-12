@@ -189,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function defining actions for each feature
     function onEachFeature(feature, layer) {
         // --- Translation Map (English to Arabic) ---
-        // Add/modify translations as needed, matching the English names from GeoJSON
         const nameTranslations = {
             "Aleppo": "حلب",
             "Damascus": "دمشق",
