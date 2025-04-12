@@ -8,13 +8,23 @@ document.addEventListener('DOMContentLoaded', function () {
     
     // Initialize the map with a more specific center point for Syria
     const map = L.map('map', {
-        center: [35.0, 38.5], // Adjusted center coordinates
+        center: [34.6, 38], 
         zoom: 7,
         minZoom: 6.5,
         maxZoom: 10,
         attributionControl: true,
         zoomControl: true
     });
+
+    // Add auto zoom out for mobile devices
+    if (window.innerWidth <= 768) {
+        setTimeout(() => {
+            const zoomOutButton = document.querySelector('.leaflet-control-zoom-out');
+            if (zoomOutButton) {
+                zoomOutButton.click();
+            }
+        }, 1000); // Wait 1 second after map initialization
+    }
 
     // Use Mapbox's satellite-streets style with explicit retina parameter
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v12/tiles/{z}/{x}/{y}{r}?access_token=pk.eyJ1IjoiamFzYXNkMTIiLCJhIjoiY205ZDZrcW0zMDdkejJrc2F4ZTU0ZWRmNyJ9.lPUX9ceswcGjrjl2e-k3Bg', {
@@ -288,17 +298,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 onEachFeature: onEachFeature
             }).addTo(map);
 
-            // Wait a moment for rendering and then adjust the view
             setTimeout(() => {
-                // Get the bounds of the loaded governorates layer
                 const bounds = geojsonLayer.getBounds();
+                // Add padding only to the sides, not to the center position
+                map.fitBounds(bounds, {
+                    paddingTopLeft: [100, 0],  // Adds padding to the left
+                    paddingBottomRight: [100, 0]  // Adds padding to the right
+                });
                 
-                // Add a bit more padding to ensure everything is visible
-                map.fitBounds(bounds.pad(0.1));
-                
-                // Force a refresh of the map
-                map.invalidateSize();
-                
+                // Optional: Force the center after bounds fit
+                map.setView([34.6, 38], map.getZoom());
+
                 // Hide loader when map is ready and remove loading class
                 mapLoader.classList.remove('active');
                 document.body.classList.remove('loading');
