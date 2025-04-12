@@ -64,6 +64,7 @@ header {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     overflow: hidden;
+    width: 100%;
 }
 
 header::before {
@@ -132,8 +133,9 @@ header::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: 25px;
-    padding-left: 25px;
+    letter-spacing: 10px;
+    padding-left: 10px; /* Compensate for letter spacing */
+    margin: 0;
 }
 
 /* Enhanced navigation menu */
@@ -464,6 +466,7 @@ footer {
     padding: 2.5rem 0;
     position: relative;
     margin-top: 40px; /* Add some space for the green and white bars */
+    width: 100%;
 }
 
 footer::before {
@@ -491,8 +494,9 @@ footer::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    letter-spacing: 25px;
-    padding-left: 25px;
+    letter-spacing: 10px;
+    padding-left: 10px; /* Compensate for letter spacing */
+    margin: 0;
 }
 
 @media (max-width: 768px) {
