@@ -631,7 +631,6 @@ img.loaded {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
-
 /* Enhanced intro section */
 .intro {
     position: relative;
