@@ -458,7 +458,7 @@ p {
 }
 
 footer {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.8));
+    background: black;
     color: var(--white);
     text-align: center;
     padding: 2.5rem 0;
