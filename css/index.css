@@ -159,41 +159,6 @@ h1 {
     flex-grow: 1;
 }
 
-.map-container {
-    margin: 50px 0;
-    text-align: center; /* Center the SVG */
-}
-
-/* Style for the SVG map container */
-#syria-svg-map {
-    width: 80%;
-    max-width: 800px;
-    height: auto;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-/* Style for individual regions (paths) in the SVG */
-#syria-svg-map .region {
-    fill: #d3d3d3; /* Default fill color */
-    stroke: #ffffff; /* White borders between regions */
-    stroke-width: 1px;
-    cursor: pointer;
-    transition: fill 0.3s ease;
-}
-
-/* Hover effect for regions */
-#syria-svg-map .region:hover {
-    fill: #a9a9a9; /* Darker color on hover */
-}
-
-/* Specific style example for Aleppo (if its path has id="aleppo") */
-#syria-svg-map #aleppo {
-    fill: #b0e0e6; /* Light blue for Aleppo */
-}
-#syria-svg-map #aleppo:hover {
-    fill: #87ceeb; /* Darker blue on hover */
-}
 
 footer {
     text-align: center;
