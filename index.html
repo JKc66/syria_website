@@ -20,8 +20,35 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/index.css">
+
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
+    <!-- Left side QR code panel -->
+    <div class="floating-panel left-panel">
+        <div class="qr-section">
+            <h3>امسح الرمز</h3>
+            <div id="qrcode"></div>
+            <div class="website-info">
+                <a href="https://syria.jawadk.me" class="website-link">syria.jawadk.me</a>
+                <p class="website-text">رابط الموقع</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right side visitor counter panel -->
+    <div class="floating-panel right-panel">
+        <div class="visitor-counter">
+            <h3>زوار الموقع</h3>
+            <div class="counter-wrapper">
+                <a href='https://www.pferdeversicherung.at/' style="display:none">Pferdeversicherung</a>
+                <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=858c52834eb5188baafcb8e50087755c796ae27b'></script>
+                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1327580/t/1"></script>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <header>
             <div class="flag">
@@ -46,9 +73,11 @@
             <h1>الجمهورية العربية السورية</h1>
         </header>
 
-        <!-- Map container div with loader -->
-        <div id="map">
-            <div class="loader" id="mapLoader"><span></span></div>
+        <div class="map-container">
+            <!-- Map -->
+            <div id="map">
+                <div class="loader" id="mapLoader"><span></span></div>
+            </div>
         </div>
 
         <footer>
@@ -74,5 +103,19 @@
             
     <!-- Custom JS -->
     <script src="js/index.js"></script>
+
+    <!-- Initialize QR Code -->
+    <script>
+        window.onload = function() {
+            new QRCode(document.getElementById("qrcode"), {
+                text: "https://syria.jawadk.me",
+                width: 128,
+                height: 128,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        }
+    </script>
 </body>
 </html>
