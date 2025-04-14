@@ -842,7 +842,9 @@ body.loading #mapLoader.active {
     }
     
     .floating-panel {
-        display: none; /* Hide both panels on mobile */
+        display: none !important; /* Hide both panels on mobile with !important */
+        visibility: hidden; /* Added for extra assurance */
+        opacity: 0; /* Added for extra assurance */
     }
     
     #map {

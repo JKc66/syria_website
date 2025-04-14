@@ -107,14 +107,17 @@
     <!-- Initialize QR Code -->
     <script>
         window.onload = function() {
-            new QRCode(document.getElementById("qrcode"), {
-                text: "https://syria.jawadk.me",
-                width: 128,
-                height: 128,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
+            // Only initialize QR code on non-mobile devices
+            if (window.innerWidth > 768) {
+                new QRCode(document.getElementById("qrcode"), {
+                    text: "https://syria.jawadk.me",
+                    width: 128,
+                    height: 128,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
         }
     </script>
 </body>
