@@ -20,31 +20,18 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/index.css">
-
-    <!-- QR Code Library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 </head>
 <body>
     <!-- Left side QR code panel -->
     <div class="floating-panel left-panel">
         <div class="qr-section">
             <h3>امسح الرمز</h3>
-            <div id="qrcode"></div>
+            <div id="qrcode">
+                <img src="images/qrcode.png" alt="QR Code for syria.jawadk.me" />
+            </div>
             <div class="website-info">
                 <a href="https://syria.jawadk.me" class="website-link">syria.jawadk.me</a>
                 <p class="website-text">رابط الموقع</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Right side visitor counter panel -->
-    <div class="floating-panel right-panel">
-        <div class="visitor-counter">
-            <h3>زوار الموقع</h3>
-            <div class="counter-wrapper">
-                <a href='https://www.pferdeversicherung.at/' style="display:none">Pferdeversicherung</a>
-                <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=858c52834eb5188baafcb8e50087755c796ae27b'></script>
-                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1327580/t/1"></script>
             </div>
         </div>
     </div>
@@ -103,22 +90,5 @@
             
     <!-- Custom JS -->
     <script src="js/index.js"></script>
-
-    <!-- Initialize QR Code -->
-    <script>
-        window.onload = function() {
-            // Only initialize QR code on non-mobile devices
-            if (window.innerWidth > 768) {
-                new QRCode(document.getElementById("qrcode"), {
-                    text: "https://syria.jawadk.me",
-                    width: 128,
-                    height: 128,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : QRCode.CorrectLevel.H
-                });
-            }
-        }
-    </script>
 </body>
 </html>

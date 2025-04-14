@@ -767,54 +767,6 @@ body.loading #mapLoader.active {
     font-size: 0.85em;
 }
 
-/* Visitor counter section */
-.visitor-counter {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.visitor-counter h3 {
-    margin: 0 0 15px 0;
-    color: #333;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.counter-wrapper {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-}
-
-/* Scanning line effect */
-.counter-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.1),
-        transparent
-    );
-    animation: scanline 3s linear infinite;
-}
-
-@keyframes scanline {
-    0% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(50%);
-    }
-}
-
 /* Mobile responsive adjustments */
 @media (max-width: 1024px) {
     .floating-panel {
@@ -823,6 +775,7 @@ body.loading #mapLoader.active {
     }
 }
 
+/* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .map-container {
         flex-direction: column;
@@ -842,8 +795,7 @@ body.loading #mapLoader.active {
     }
     
     .floating-panel, 
-    .floating-panel.left-panel, 
-    .floating-panel.right-panel {
+    .floating-panel.left-panel {
         display: none !important; /* Hide both panels on mobile with !important */
         visibility: hidden !important; /* Added for extra assurance */
         opacity: 0 !important; /* Added for extra assurance */
