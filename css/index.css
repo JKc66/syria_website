@@ -841,10 +841,22 @@ body.loading #mapLoader.active {
         max-width: 300px;
     }
     
-    .floating-panel {
+    .floating-panel, 
+    .floating-panel.left-panel, 
+    .floating-panel.right-panel {
         display: none !important; /* Hide both panels on mobile with !important */
-        visibility: hidden; /* Added for extra assurance */
-        opacity: 0; /* Added for extra assurance */
+        visibility: hidden !important; /* Added for extra assurance */
+        opacity: 0 !important; /* Added for extra assurance */
+        pointer-events: none !important; /* Prevent any interaction */
+        width: 0 !important; /* Force zero width */
+        height: 0 !important; /* Force zero height */
+        padding: 0 !important; /* Remove padding */
+        margin: 0 !important; /* Remove margin */
+        border: none !important; /* Remove border */
+        position: absolute !important; /* Take out of flow */
+        overflow: hidden !important; /* Hide overflow */
+        clip: rect(0, 0, 0, 0) !important; /* Clip to nothing */
+        clip-path: inset(100%) !important; /* Alternative clipping method */
     }
     
     #map {
