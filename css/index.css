@@ -700,71 +700,128 @@ body.loading #mapLoader.active {
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
-    width: 180px;
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.95);
     padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    max-width: 200px;
 }
 
-.floating-panel.left-panel {
-    left: 25px;
+.left-panel {
+    left: 20px;
 }
 
-.floating-panel.right-panel {
-    right: 25px;
+.right-panel {
+    right: 20px;
 }
 
-/* QR code section */
 .qr-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     text-align: center;
+}
+
+/* Style for the Competition QR Code (Left Panel) - Enhanced */
+.decorative-border-comp {
+    /* Use a double border */
+    border: 5px double var(--flag-green, #089938);
+    outline: 2px solid white; /* Add an inner spacing effect */
+    outline-offset: -7px;
+    border-radius: 12px; /* Slightly larger radius */
+    padding: 18px; /* Adjust padding */
+    position: relative;
+    background-color: #fdfdfd; /* Slightly off-white background */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15); /* Enhanced shadow */
+}
+
+/* Refined corner accents */
+.decorative-border-comp::before,
+.decorative-border-comp::after {
+    content: '★'; /* Use star symbol */
+    position: absolute;
+    color: var(--flag-green, #089938);
+    font-size: 14px;
+    line-height: 1;
+    background-color: white; /* Ensure visibility over border */
+    padding: 0 2px;
+}
+
+.decorative-border-comp::before {
+    top: -8px;
+    left: 10px;
+}
+
+.decorative-border-comp::after {
+    bottom: -8px;
+    right: 10px;
+}
+
+/* Style for the Website QR Code (Right Panel) - Enhanced */
+.decorative-border-site {
+    /* Dotted red border */
+    border: 3px dotted var(--flag-red, #CE1126);
+    border-radius: 8px;
+    padding: 18px; /* Adjust padding */
+    position: relative;
+    /* Solid background with subtle texture */
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.03' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Inner shadow */
+}
+
+/* Change marker style */
+.decorative-border-site::before,
+.decorative-border-site::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: var(--flag-black, #000000); /* Black squares */
+    border: 1px solid var(--flag-red, #CE1126);
+    transform: rotate(45deg);
+}
+
+.decorative-border-site::before {
+    top: -5px;
+    left: 15px;
+}
+
+.decorative-border-site::after {
+    bottom: -5px;
+    right: 15px;
 }
 
 .qr-section h3 {
     margin: 0 0 15px 0;
-    color: #333;
+    color: #007a3d;
     font-size: 1.2em;
-    font-weight: bold;
 }
 
-#qrcode {
-    background: white;
-    padding: 10px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#qrcode img {
-    display: block;
-    max-width: 100%;
+.qr-section img {
+    max-width: 150px;
     height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .website-info {
-    background: rgba(0, 0, 0, 0.03);
-    padding: 10px;
-    border-radius: 8px;
-    width: 100%;
-}
-
-.website-link {
-    color: #2c5282;
-    text-decoration: none;
-    font-size: 0.9em;
-    margin: 8px 0;
-    word-break: break-all;
-    display: block;
+    margin-top: 10px;
 }
 
 .website-text {
-    color: #666;
-    margin: 5px 0 0 0;
-    font-size: 0.85em;
+    margin: 5px 0;
+    color: #333;
+    font-size: 0.9em;
+}
+
+.website-link {
+    color: #007a3d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.website-link:hover {
+    text-decoration: underline;
 }
 
 /* Mobile responsive adjustments */
@@ -792,6 +849,17 @@ body.loading #mapLoader.active {
         text-align: center;
         width: 80%;
         max-width: 300px;
+    }
+    
+    .floating-panel {
+        position: static;
+        margin: 10px auto;
+        transform: none;
+        max-width: 150px;
+    }
+    
+    .qr-section img {
+        max-width: 100px;
     }
     
     .floating-panel, 
